@@ -15,8 +15,8 @@ st.title("🤖 SHL Assessment Recommender")
 st.markdown("Enter a job description to discover matching SHL assessments.")
 
 # -------------------- GEMINI SETUP --------------------
-# GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-# genai.configure(api_key=GEMINI_API_KEY)
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=GEMINI_API_KEY)
 api_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=api_key)
 # print(api_key)
