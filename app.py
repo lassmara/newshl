@@ -5,16 +5,21 @@ import ast
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import google.generativeai as genai
-
-# -------------------- CONFIG --------------------
+from dotenv import load_dotenv
+load_dotenv()
+import os
+# -------------------- CONFIG -----
+# ---------------
 st.set_page_config(page_title="🔍 SHL Job Assessment Recommender", layout="wide")
 st.title("🤖 SHL Assessment Recommender")
 st.markdown("Enter a job description to discover matching SHL assessments.")
 
 # -------------------- GEMINI SETUP --------------------
-GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-genai.configure(api_key=GEMINI_API_KEY)
-
+# GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+# genai.configure(api_key=GEMINI_API_KEY)
+api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
+# print(api_key)
 # -------------------- LOAD DATA --------------------
 @st.cache_data
 def load_raw_data():
